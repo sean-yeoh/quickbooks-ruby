@@ -25,6 +25,16 @@ module Quickbooks
         response.plain_body
       end
 
+      def send(payment, email_address)
+        url = "#{url_for_resource(model::REST_RESOURCE)}/#{payment.id}/send?sendTo=#{email_address}"
+        response = do_http_post(url, "", {}, { 'Content-Type' => 'application/octet-stream' })
+        if response.code.to_i == 200
+          model.from_xml(parse_singular_entity_response(model, response.plain_body))
+        else
+          nil
+        end
+      end
+
       private
 
       def model
