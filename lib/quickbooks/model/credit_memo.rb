@@ -16,7 +16,6 @@ module Quickbooks
       xml_accessor :doc_number, :from => 'DocNumber'
       xml_accessor :txn_date, :from => 'TxnDate', :as => Date
       xml_accessor :department_ref, :from => 'DepartmentRef', :as => BaseReference
-
       xml_accessor :line_items, :from => 'Line', :as => [Line]
       xml_accessor :txn_tax_detail, :from => 'TxnTaxDetail', :as => TransactionTaxDetail
       xml_accessor :private_note, :from => 'PrivateNote'
